@@ -1,0 +1,472 @@
+$def with (loginform)
+
+<title>::STREAMZ::</title> 
+
+<style>
+/*
+            font-family: 'Abel', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Patua One', cursive;
+*/
+*{
+    padding:0;
+    margin:0;
+    outline: none !important;
+}
+a:hover,a:focus{
+    text-decoration: none;
+    color:#e46226;
+}
+body{
+    background:#eee;
+}
+
+.flex-container {
+    display: flex;
+
+  }
+
+.bg-image {
+  /* The image used */
+  
+  width: 100%;
+  height: 800px; 
+  background-image: url("/static/image/bg2.jpg");
+  background-size: cover;
+  position:absolute;
+}
+
+.bw-gradient{
+    width: 100%;
+    height: 800px;
+
+    position:absolute;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+4,000000+100&1+21,0+100 */
+background: -moz-linear-gradient(top, rgba(0,0,0,1) 4%, rgba(0,0,0,1) 21%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(0,0,0,1) 4%,rgba(0,0,0,1) 21%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(0,0,0,1) 4%,rgba(0,0,0,1) 21%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+
+}
+
+.container{
+    width: 100%;
+    height: 100px;
+    position:relative;
+    margin: 0 auto;
+    padding: 0px 20px;
+
+}
+.header{
+    width:100%;
+
+    padding: 20px 0px;
+}
+nav>ul{
+    position:absolute;
+    right: 150px;
+    text-decoration: none;
+}
+
+nav>ul>li{
+    list-style: none;
+    float:left;
+    height: 40px;
+    line-height: 40px;
+    outline: none;
+    text-decoration: none;
+}
+
+nav>ul>li>a{
+    text-decoration:none;
+    font-family: 'Abel', sans-serif;
+    color:#fff;
+    font-size:22px;
+    font-weight: bold;
+    padding:0 20px;
+    outline: none;
+    text-decoration: none;
+}
+
+.btn{
+    width: 130px;
+    height: 40px;
+    background-color: #e46226;
+    font-size:20px;
+    font-weight:bold;
+    font-family: 'Abel', sans-serif;
+    border: none;
+    border-radius: 5 px;
+    color:#fff;
+    position: absolute;
+    right:0;
+    outline:0;
+
+}
+
+.logo{
+        float: left;
+        display: block;
+        color: #e46226;
+        text-align: center;
+        padding:5px 20px;
+        text-decoration: none;        
+        font-family: 'Abel', sans-serif;
+        font-size: 45px;
+        font-weight: 900;
+    }
+.brand-quote{
+    color: #fff;
+    font-family: 'Patua One', cursive;
+    font-size: 50px;
+    padding-left:20px;
+    position: relative;
+}
+
+.para{
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    color:#fff;
+    font-size: 30px;
+    top: 1200px;
+    padding-left:20px;
+    text-align: justify;
+}
+
+
+@media screen and (max-width: 550px)
+{
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .para{
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    color:#fff;
+    top: 1200px;
+    padding-left:20px;
+    }
+}
+
+
+</style>
+
+
+<style>
+
+*,:after,:before{box-sizing:border-box}
+.clearfix:after,.clearfix:before{content:'';display:table}
+.clearfix:after{clear:both;display:block}
+a{color:inherit;text-decoration:none}
+
+.login-wrap{
+    padding:5% 10%;
+	width:100%;
+	
+	max-width:525px;
+	min-height:670px;
+	position:relative;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f3c5bd+0,db3600+0,e57a00+65,db3600+100 */
+background: rgb(243,197,189); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(243,197,189,1) 0%, rgba(219,54,0,1) 0%, rgba(229,122,0,1) 65%, rgba(219,54,0,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(243,197,189,1) 0%,rgba(219,54,0,1) 0%,rgba(229,122,0,1) 65%,rgba(219,54,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(243,197,189,1) 0%,rgba(219,54,0,1) 0%,rgba(229,122,0,1) 65%,rgba(219,54,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3c5bd', endColorstr='#db3600',GradientType=0 ); /* IE6-9 */
+	box-shadow:0 1px 1px 0 rgba(255, 254, 254, 0.4),0 1px 5px 0 rgba(245, 242, 242, 0.4);
+}
+
+
+
+
+.login-form{
+	min-height:345px;
+	position:relative;
+	-webkit-perspective:1000px;
+	        perspective:1000px;
+	-webkit-transform-style:preserve-3d;
+	        transform-style:preserve-3d;
+}
+.login-form .group{
+	margin-bottom:15px;
+}
+.login-form .group .label,
+.login-form .group .input,
+.login-form .group .button{
+	width:100%;
+	color:#FFFFFF;
+    font-weight:bold;
+	display:block;
+}
+.login-form .group .input,
+.login-form .group .button{
+	border:none;
+	padding:15px 20px;
+	border-radius:25px;
+	background:rgba(255,255,255,.1);
+}
+.login-form .group input[data-type="password"]{
+	
+	-webkit-text-security:circle;
+}
+.login-form .group .label{
+	color:#FFF;
+	font-size:px;
+    text-align:left;
+}
+.login-form .group .button{
+	background:#ffffff;
+        color:#e46226;
+        font-weight:bold;
+}
+.login-form .group label .icon{
+	width:15px;
+	height:15px;
+	border-radius:2px;
+	position:relative;
+	display:inline-block;
+	background:rgba(255,255,255,.1);
+}
+.login-form .group label .icon:before,
+.login-form .group label .icon:after{
+	
+	width:10px;
+	height:2px;
+	background:#fff;
+	position:absolute;
+	transition:all .2s ease-in-out 0s;
+}
+
+.login-form .group .check:checked + label{
+	color:#FFF;
+}
+.login-form .group .check:checked + label .icon{
+	background:#e46226;
+}
+
+
+.hr{
+	height:2px;
+	margin:60px 0 50px 0;
+	background:rgba(255,255,255,.2);
+}
+
+.close {
+    color: #fff; 
+    opacity: 1;
+}
+.foot-lnk{
+	text-align:center;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+</style>
+<style>
+.container1 {
+  position: relative;
+  font-family: Arial;
+}
+
+.text-block {
+  position: absolute;
+  top: 3%;
+  right: 60%;
+  background-color:rgba(41, 39, 39, 0.6);;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: justify;
+}
+
+.text-block1 {
+  position: absolute;
+  top: 1%;
+  left:10%;
+  right: 10%;
+  font-size: 30px;
+  text-align: justify;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+</style>
+
+<style>
+@media screen and (max-width: 550px)
+{
+    .brand-quote{
+    color: #fff;
+    font-family: 'Patua One', cursive;
+    font-size: 20px;
+    padding-left:20px;
+    position: relative;
+}
+.para{
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    color:#fff;
+    font-size: 12px;
+    top: 1200px;
+    padding-left:20px;
+    text-align: justify;
+}
+.text-block {
+  position: absolute;
+  top: 3%;
+  right: 60%;
+  background-color:rgba(41, 39, 39, 0.6);
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: justify;
+}
+.text-block1 {
+  position: absolute;
+  top: 1%;
+  bottom:1%;
+  left:1%;
+  right: 1%;
+  background-color:rgba(41, 39, 39, 0.6);
+  font-size: 28px;
+  text-align: justify;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+}
+
+</style>
+
+
+</head>
+<body>
+
+<div class="bg-image">
+        <div class="bw-gradient"></div>
+        <div class="container">
+            <div class="logo"><a class="logo" href="/">STREAMZ</a></div>
+            <div class="header">
+                <nav>
+                    
+                
+                <button type="button" class="btn" data-toggle="modal" data-target="#myModal">LOGIN</button>
+            </nav>
+            </div>
+            
+            <div class="flex-container">
+                    <div>
+                    
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <div class="text-block1" style="margin-top:150px;">
+                    <center>
+                    <p>Our mission is to give everyone a voice and show them the world.</p><br/>   
+                    <p >Everyone deserves to have a voice, and that the world is a better place when we listen, share and build community through our stories.</p>              
+                </center>
+
+                </div>
+            </div>
+                    
+            </div>
+
+
+              
+        </div>
+
+    </div>
+
+  
+
+        <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+        
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          
+          
+                    
+                    <div class="login-wrap">
+                        <div style="height:50px;">
+                            <button type="button" style=""class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                           
+                                <center><h1 style="color:white; font-family: 'Montserrat', sans-serif;">LOGIN</h1></center><br/>
+                                <div class="login-form">
+                                    <form method="POST">
+                                        <div class="group">
+                                            <label for="username" class="label">USERNAME</label>
+                                            <input id="username" type="text" class="input" name="username"/><div class="post" style="display: none;"></div>
+                                        </div>
+                                        <div class="group">
+                                            <label for="password" class="label">PASSWORD</label>
+                                            <input id="password" type="password" class="input" data-type="text" name="password"/><div class="post" style="display: none;"></div>
+                                        </div>
+                                  
+                                        <div class="group">
+                                            
+                                            <input for="Login" type="submit" class="button" value="LOGIN" id="Login"><div class="post" style="display: none;"></div>
+                                        </div>
+                                        <div class="hr"></div>
+                                        
+                                        <div class="foot-lnk">
+                                            <a href="/register" ><label style="color:white;cursor: hand;">New User? Register</a>
+                                        </div>
+                                    </div>
+                                </form>
+                                </div>
+
+                                
+
+                          
+                            
+                        </div>
+            
+           
+         
+          
+        </div>
+      </div>
+      
+    </div>
+<div style="height: 800px;">
+</div>
+<div style="background-color: rgba(228,98,38, 0.95); padding:6%;">
+<center><p style="font-family: 'Abel', sans-serif; font-size: 40px;"  > Our values are based on four essential freedoms that define who we are.</p></center>
+</div>
+<div class="container1" style="max-height:700px;">
+    <img src="/static/image/expression.jpeg" style="width:100%; ">
+    <div class="text-block" >
+        <h4 class="brand-quote" style="color: #e46226;">Freedom Of Expression</h4>
+        <p class="para">We believe people should be able to speak freely, share opinions, foster open dialogue, and that creative freedom leads to new voices, formats and possibilities.</p>
+    </div>
+</div>
+
+<div class="container1" style="max-height:700px;">
+    <img src="/static/image/information.jpg" style="width:100%;">
+    <div class="text-block">
+        <h4 class="brand-quote" style="color: #e46226;">Freedom of information</h4>
+        <p class="para">We believe everyone should have easy, open access to information and that video is a powerful force for education, building understanding, and documenting world events, big and small.</p>
+    </div>
+</div>
+
+<div class="container1" style="max-height:700px;">
+        <img src="/static/image/opportunity.jpg" style="width:100%;">
+        <div class="text-block">
+            <h4 class="brand-quote" style="color: #e46226;">Freedom of Opportunity</h4>
+            <p class="para">We believe everyone should have a chance to be discovered, build a business and succeed on their own terms, and that people—not gatekeepers—decide what’s popular.</p>
+        </div>
+    </div>
+    <div class="container1" style="max-height:700px;">
+            <img src="/static/image/belong.jpg" style="width:100%;max-height:700px; background-size: contain;">
+            <div class="text-block">
+                <h4 class="brand-quote" style="color: #e46226;">Freedom to Belong</h4>
+                <p class="para">We believe everyone should be able to find communities of support, break down barriers, transcend borders and come together around shared interests and passions.</p>
+            </div>
+        </div>
+    

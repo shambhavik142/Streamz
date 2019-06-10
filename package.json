@@ -1,0 +1,23 @@
+{
+  "name": "streamz",
+  "version": "1.0.0",
+  "description": "Video Portal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arnenupharsah/Streamz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arnenupharsah/Streamz/issues"
+  },
+  "homepage": "https://github.com/arnenupharsah/Streamz",
+  "dependencies": {
+    "json-server": "^0.14.2"
+  },
+  "devDependencies": {}
+}

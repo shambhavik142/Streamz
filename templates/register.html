@@ -1,0 +1,345 @@
+$def with (register)
+
+
+<style>
+/*
+            font-family: 'Abel', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Patua One', cursive;
+*/
+*{
+    padding:0;
+    margin:0;
+    outline: none !important;
+}
+a:hover,a:focus{
+    text-decoration: none;
+    color:#e46226;
+}
+body{
+    background:#eee;
+}
+
+.flex-container {
+    display: flex;
+
+  }
+
+.bg-image {
+  /* The image used */
+  
+  background: url(static/image/bg2.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.bw-gradient{
+    width: 100%;
+    height: 800px;
+
+    position:absolute;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+4,000000+100&1+21,0+100 */
+background: -moz-linear-gradient(top, rgba(0,0,0,1) 4%, rgba(0,0,0,1) 21%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(0,0,0,1) 4%,rgba(0,0,0,1) 21%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(0,0,0,1) 4%,rgba(0,0,0,1) 21%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+
+}
+
+.container{
+    width: 100%;
+    height: 100px;
+    position:relative;
+    margin: 0 auto;
+    padding: 0px 20px;
+
+}
+.header{
+    width:100%;
+
+    padding: 20px 0px;
+}
+nav>ul{
+    position:absolute;
+    right: 150px;
+    text-decoration: none;
+}
+
+nav>ul>li{
+    list-style: none;
+    float:left;
+    height: 40px;
+    line-height: 40px;
+    outline: none;
+    text-decoration: none;
+}
+
+nav>ul>li>a{
+    text-decoration:none;
+    font-family: 'Abel', sans-serif;
+    color:#fff;
+    font-size:22px;
+    font-weight: bold;
+    padding:0 20px;
+    outline: none;
+    text-decoration: none;
+}
+
+.btn{
+    width: 130px;
+    height: 40px;
+    background-color: #e46226;
+    font-size:20px;
+    font-weight:bold;
+    font-family: 'Abel', sans-serif;
+    border: none;
+    border-radius: 5 px;
+    color:#fff;
+    position: absolute;
+    right:0;
+    outline:0;
+
+}
+
+.logo{
+        float: left;
+        display: block;
+        color: #e46226;
+        text-align: center;
+        padding:5px 20px;
+        text-decoration: none;        
+        font-family: 'Abel', sans-serif;
+        font-size: 45px;
+        font-weight: 900;
+    }
+.brand-quote{
+    color: #fff;
+    font-family: 'Patua One', cursive;
+    font-size: 50px;
+    padding-left:20px;
+    position: relative;
+    top:100px;
+}
+
+.para{
+    width: 50%;
+    font-family: 'Montserrat', sans-serif;
+    color:#fff;
+    top: 1200px;
+    padding-left:20px;
+}
+
+
+@media screen and (max-width: 550px)
+{
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .para{
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    color:#fff;
+    top: 1200px;
+    padding-left:20px;
+    }
+}
+
+
+</style>
+
+
+
+<style>
+
+    *,:after,:before{box-sizing:border-box}
+    .clearfix:after,.clearfix:before{content:'';display:table}
+    .clearfix:after{clear:both;display:block}
+    a{color:inherit;text-decoration:none}
+    
+    .register-wrap{
+        padding:5% 10%;
+        width:60%;
+        margin:auto;       
+        position:relative;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f3c5bd+0,db3600+0,e57a00+65,db3600+100 */
+    background: rgb(243,197,189); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(243,197,189,1) 0%, rgba(219,54,0,1) 0%, rgba(229,122,0,1) 65%, rgba(219,54,0,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(243,197,189,1) 0%,rgba(219,54,0,1) 0%,rgba(229,122,0,1) 65%,rgba(219,54,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(243,197,189,1) 0%,rgba(219,54,0,1) 0%,rgba(229,122,0,1) 65%,rgba(219,54,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3c5bd', endColorstr='#db3600',GradientType=0 ); /* IE6-9 */
+        box-shadow:0 1px 1px 0 rgba(255, 254, 254, 0.4),0 1px 5px 0 rgba(245, 242, 242, 0.4);
+    }
+    
+    
+    
+    
+    .register-form{
+        min-height:345px;
+        position:relative;
+        -webkit-perspective:1000px;
+                perspective:1000px;
+        -webkit-transform-style:preserve-3d;
+                transform-style:preserve-3d;
+    }
+    .register-form .group{
+        margin-bottom:15px;
+    }
+    .register-form .group .label,
+    .register-form .group .input,
+    .register-form .group .button{
+        width:100%;
+        color:#FFFFFF;
+        font-weight:bold;
+        display:block;
+    }
+    .register-form .group .input,
+    .register-form .group .button{
+        border:none;
+        padding:15px 20px;
+        border-radius:25px;
+        background:rgba(255,255,255,.1);
+    }
+    .register-form .group input[data-type="password"]{
+        text-security:circle;
+        -webkit-text-security:circle;
+    }
+    .register-form .group .label{
+        color:#FFF;
+        font-size:15px;
+    text-align:left;
+    }
+    .register-form .group .button{
+        background:#ffffff;
+        color:#e46226;
+        font-weight:bold;
+    }
+    .register-form .group label .icon{
+        width:15px;
+        height:15px;
+        border-radius:2px;
+        position:relative;
+        display:inline-block;
+        background:rgba(255,255,255,.1);
+    }
+    .register-form .group label .icon:before,
+    .register-form .group label .icon:after{
+        content:'';
+        width:10px;
+        height:2px;
+        background:#fff;
+        position:absolute;
+        transition:all .2s ease-in-out 0s;
+    }
+   
+    .register-form .group .check:checked + label{
+        color:#FFF;
+    }
+    .register-form .group .check:checked + label .icon{
+        background:#e46226;
+    }
+   
+    
+    .hr{
+        height:2px;
+        margin:60px 0 50px 0;
+        background:rgba(255,255,255,.2);
+    }
+    
+ 
+    .foot-lnk{
+	text-align:center;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+    </style>
+
+</head>
+<body>
+    <div class="bg-image">
+        <div class="bw-gradient"></div>
+        <div class="container">
+            <div class="logo"><a class="logo" href="/">STREAMZ</a></div>
+            
+            
+            
+
+
+              
+        </div>
+        <div class="flex-container">
+            
+		   
+            
+                
+
+
+                <div class="register-wrap">
+                  
+                         <center><h1 style="color:white; font-family: 'Montserrat', sans-serif;">REGISTER</h1></center><br/>
+                            <div class="register-form">
+                            <form method="POST">
+                                <div class="group">
+                                        <label for="firstname" class="label">FIRST NAME</label>
+                                        <input id="firstname" type="text" class="input" name="firstname"/><div class="post" style="display: none;"></div>
+                                    </div>
+                                <div class="group">
+                                        <label for="lastname" class="label">LAST NAME</label>
+                                        <input id="lastname" type="text" class="input" name="lastname"/><div class="post" style="display: none;"></div>
+                                    </div>
+                                <div class="group">
+                                        <label for="phone" class="label">PHONE NO.</label>
+                                        <input id="phone" type="text" class="input" name="phone"/><div class="post" style="display: none;"></div>
+                                    </div>
+                                <div class="group">
+                                        <label for="email" class="label">EMAIL ID</label>
+                                        <input id="email" type="text" class="input" name="email"/><div class="post" style="display: none;"></div>
+                                    </div>
+                                    <div class="group">
+                                            <label for="username" class="label">USERNAME</label>
+                                            <input id="username" type="text" class="input" name="username"/><div class="post" style="display: none;"></div>
+                                        </div>
+                                <div class="group">
+                                        <label for="password" class="label">PASSWORD</label>
+                                        <input id="password" type="password" class="input" data-type="password" name="password"/><div class="post" style="display: none;"></div>
+                                    </div>
+                              
+                                <div class="group">
+                                        <input for="Register" type="submit" class="button" value="SIGN UP" id="Register"><div class="post" style="display: none;"></div>
+                                    </div>
+                                <div class="hr"></div>
+                                <div class="foot-lnk">
+                                    <a href="/"><label style="color:white; cursor: hand;">Already Member?</a>
+                                </div>
+                            </form>
+                                </div>
+                               
+                            </div>
+
+                            
+
+                      
+                        
+                    </div>
+
+
+
+
+          
+        </div>
+        
+    </div>
+
+    </div>
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,677 @@
+$def with (username,firstname,videoid,videoname,uploader,videodescription,views,likes,dislikes,likestatus,subscribestatus,commentid,commentusername,commentlist,recomresult,recomvideoname,recomuploader,recomdescription,recomviews,recomlikes,recomdislikes)
+<title>::VIDEO::</title>
+<style>
+   /*
+    font-family: 'Abel', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Patua One', cursive;
+    */
+    *{
+        padding:0;
+        margin:0;
+    }
+    body{
+        background-color: rgb(22, 22, 22);
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .fa-2x{
+        font-size:2em;
+    }
+    .fa{
+        position:relative;
+        display:table-cell;
+        width:60px;
+        height:36px;
+        text-align:center;
+        vertical-align:middle;
+        font-size:20px;
+    }
+
+    .main-menu:hover, #navicon:hover, nav.main-menu.expanded{
+        width:250px;
+        overflow:visible;
+
+    }
+
+    .main-menu{
+        background:rgba(0,0,0,1) 4%;
+        border-right:1px solid #e46226;
+        position: fixed;
+        top:60px;
+        bottom:0;
+        height:100%-70px;
+        left:0;
+        width:60px;
+        overflow:hidden;
+        transition: width 0.2s linear;
+        z-index:1000;
+        -webkit-transform:translate(0) scale(1,1);
+    }
+
+    .main-menu > ul{
+        margin: 7px 0;
+    }
+
+    .main-menu li{
+        position: relative;
+        display: block;
+        width:250px;
+    }
+
+    .main-menu li a{
+        position: relative;
+        display: table;
+        border-collapse: collapse;
+        border-spacing: 0;
+        color:#999;
+        font-family:arial;
+        font-size:14px;
+        text-decoration:none;
+        -webkit-transform:translateZ(0) scale(1,1);
+        transition: all 0.2s linear;
+    }
+
+    .main-menu .nav-icon{
+        
+        display: table-cell;
+        width:60px;
+        height:36px;
+        text-align:center;
+        vertical-align:middle;
+        font-size:18px;
+        position: fixed;
+    }
+
+    .main-menu .nav-text{
+        position: relative;
+        display: table-cell;
+        vertical-align:middle;
+        width:190px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        
+    }
+
+    .main-menu ul.logout{
+        position:fixed;
+        left:0;
+        bottom:0;
+    }
+
+    .no-touch .scrollable.hover{
+        overflow-y:hidden;
+    }
+    .no-touch .scrollable.hover:hover{
+        overflow-y:auto;
+        overflow:visible;
+    }
+
+    a:hover,a:focus{
+        text-decoration: none;
+    }
+
+    nav{
+        user-select: none;
+    }
+    nav ul,nav li{
+        outline:0;
+        margin:0;
+        padding:0;
+
+    }
+
+    .main-menu li:hover a,
+    .nav.main-menu li:active a,
+    .dropdown-menu li a:hover,
+    .dropdown-menu li a:focus,
+    .dropdown-menu .active a,
+    .dropdown-menu .active a:hover,
+    .dropdown-menu .active a:focus,
+    .no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
+    .dashboard-page nav.dashboard-menu ul li.active a{
+        color:white;
+        background-color:#e46226;
+    }
+
+    .area{
+        float:left;
+        background: #e2e2e2;
+        width: 100%;
+        height:100%;
+    }
+
+/* Top Navigation */
+
+    .topnav {
+        height:60px;
+        overflow: hidden;
+        background-color: #000;
+        color:#FFF;
+        border-bottom:1px solid #e46226;
+        position: fixed;
+        width:100%;
+    }
+
+    .logo{
+        float: left;
+        display: block;
+        color: #e46226;
+        text-align: center;
+        padding:0px 20px;
+        text-decoration: none;        
+        font-family: 'Abel', sans-serif;
+        font-size: 40px;
+        font-weight: 900;
+    }
+
+    .username {
+        float: right;
+        display: block;         
+        text-align: center;
+        padding: 15px 16px;
+        text-decoration: none;
+        color:#fff;
+        font-size:25px;
+        font-weight: bold;
+        font-family: 'Abel', sans-serif;
+
+    }
+
+    .topnav a:hover {
+        background-color: none;
+        color: #e46226;
+    }
+
+    .search-container {
+        float: left;
+        width:40%;
+        margin-left:10%;
+    }
+
+    .topnav input[type=text] {
+        padding: 6px;
+        margin-top: 8px;
+        font-size: 17px;
+        border: none;
+        width:80%;
+        color:#000;
+    }
+
+    .topnav .search-container .button {
+        float: right;
+        padding: 0px 10px;
+        margin-top: 8px;
+        margin-right: 0px;
+        background-color: #e46226;
+        font-size: 17px;
+        border: none;
+        cursor: pointer;
+        text-align:center;
+        width:20%;
+        
+    }
+
+    .button {
+        float: right;
+        padding: 6px 10px;
+        margin-top: 8px;
+        margin-right: 0px;
+        background-color: #e46226;
+        font-size: 17px;
+        border: none;
+        cursor: pointer;
+        text-align:center;
+        
+    }
+    .topnav .search-container button:hover {
+        background: #ccc;
+    }
+    #navicon{
+        visibility: hidden;
+        float: left;
+        display: block;
+        color: #e46226;
+        text-align: center;
+        padding:0px 20px;
+        text-decoration: none;        
+        font-family: 'Abel', sans-serif;
+        font-size: 40px;
+        font-weight: 900;
+        position: absolute; 
+        left: -999em;            
+    }  
+
+    #navicon:active { 
+        background-color: none;
+    }
+    .iclass {
+        z-index:-10;
+    }
+    .aclass {
+        color:#e2e2e2;
+        background-color: #e46226;
+        font-weight: bolder;
+    }
+    .aclass:hover {
+        color:#FFF;
+    } 
+
+
+/*Content*/
+    .video-content { grid-area: video; height:100%;}
+    .recommendation { grid-area: recom; }
+    .comments { grid-area: comment; }
+    .grid-container {
+        display: grid;
+        grid-template-areas:
+        'video video video video video video video recom recom recom'
+        'comment comment comment comment comment comment comment recom recom recom';
+        padding-top:100px;
+        padding-left:120px;
+        flex-wrap: wrap;
+      }
+    
+      
+    .grid-container > div {
+        font-size: 30px;
+        width:100%;        
+      }
+    
+    .recommended-videos {
+        display: grid;
+        grid-template-columns: 40% 58%;    
+        grid-gap: 2%;    
+        color:#FFFFFF;
+      }
+    
+    .recommended-videos>div {     
+        font-size: 30px;
+        width:100%;   
+      }
+
+
+        
+/*Comment*/
+    .comment-container input[type=text] {
+        padding: 6px;
+        border-radius:25px 0 0 25px;
+        margin-top: 8px;
+        font-size: 17px;
+        border: none;
+        width:80%;
+        background:#ffffff;
+        color:#000;
+    }
+       
+    .comment-container .button {
+        float: right;
+        padding: 6px 10px;
+        margin-top: 8px;
+        margin-right: 0px;
+        background-color: #e46226;
+        font-size: 17px;
+        border: none;
+        cursor: pointer;
+        text-align:center;
+        width:20%;
+          
+        }
+    .video{
+        min-width:1000px; 
+        width:100%;
+    }
+
+</style>
+    
+<style>
+    @media screen and (min-width: 750px) and (max-width: 900px)
+    {
+        .search-container {
+            width:20%;
+        }
+        .video{
+        min-width:100%; 
+        width:100%;
+    }
+    .grid-container {
+            display: grid;
+            grid-template-areas:'video '
+            'recom'
+            'comment';
+            padding:5px;
+            padding-top:90px;  
+            padding-left:120px;     
+        }
+    }
+        
+    @media screen and (max-width: 750px)
+    {
+    
+
+        .main-menu {
+            width:0px;
+        }
+
+        #navicon {
+            visibility: visible;
+            float: left;
+            display: block;
+            color: #e46226;
+            text-align: center;
+            padding:10px 20px;
+            text-decoration: none;        
+            font-family: 'Abel', sans-serif;
+            font-size: 40px;
+            font-weight: 900;
+            left:0;
+            position: relative;
+        } 
+        .likebuttons {
+            float:left;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-areas:'video '
+            'recom'
+            'comment';
+            padding:5px;
+            padding-top:90px;       
+        }
+        
+        .main-menu {
+            width:0px;
+        }
+        
+        #navicon {
+            visibility: visible;
+        } 
+        .username {
+            display:none;
+        }
+        .logo {
+            float: left;
+            display: block;
+            color: #e46226;
+            text-align: center;
+            padding:15px 20px;
+            text-decoration: none;        
+            font-family: 'Abel', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+
+        }
+        .search-container {
+            float: left;
+            width:50%;
+            margin-left:1%;
+        }
+        .video{
+        min-width:100%; 
+        width:100%;
+    }
+
+    }    
+</style>
+
+
+</head>
+<body>
+
+    <nav class="main-menu" id="navbar2">
+        <ul>
+                <li class="has-subnav">
+                        <a href="/uploadvideo"><i class="fa fa-upload fa-2x"></i><span class="nav-text">UPLOAD VIDEO</span></a>
+                    </li>                
+                    <div style=" padding:0px 10px;"><hr/></div> 
+                <li>
+                    <a href="/home"><i class="fa fa-home fa-2x"></i><span class="nav-text">HOME</span></a>
+                </li>
+                <li class="has-subnav">
+                    <a href="/subscription"><i class="fa fa-list fa-2x"></i><span class="nav-text">SUBSCRIPTION</span></a>
+                </li>                
+                <div style=" padding:0px 10px;"><hr/></div> 
+                <li>
+                    <a href="/categories/entertainment"><i class="fa fa-television fa-2x"></i><span class="nav-text">ENTERTAINMENT</span></a>
+                </li>
+                <li>
+                    <a href="/categories/news"><i class="fa fa-newspaper-o fa-2x"></i><span class="nav-text">NEWS</span></a>
+                </li>
+                <li>
+                    <a href="/categories/education"><i class="fa fa-pencil fa-2x"></i><span class="nav-text">EDUCATION</span></a>
+                </li>
+                <li>
+                    <a href="/categories/sports"><i class="fa fa-soccer-ball-o fa-2x"></i><span class="nav-text">SPORTS</span></a>
+                </li>
+                <li>
+                    <a href="/categories/kids"><i class="fa fa-child fa-2x"></i><span class="nav-text">KIDS</span></a>
+                </li>
+                <div style=" padding:0px 10px;"><hr/></div>
+                <li>
+                    <a href="/myprofile"><i class="fa fa-user-circle fa-2x"></i><span class="nav-text">MY PROFILE</span></a>
+                </li>
+                <li>
+                    <a href="/uploads"><i class="fa fa-folder-open fa-2x"></i><span class="nav-text">UPLOADS</span></a>
+                </li>
+                <li>
+                    <a href="/statistics"><i class="fa fa-bar-chart-o fa-2x"></i><span class="nav-text">STATISTICS</span></a>
+                </li>
+                <li class="has-subnav">
+                    <a href="/history"><i class="fa fa-folder-open fa-2x"></i><span class="nav-text">HISTORY</span></a>
+                </li>
+        </ul>    
+        <ul class="logout">
+            <li>
+                <a href="../logout"><i class="fa fa-power-off fa-2x"></i><span class="nav-text">LOGOUT</span></a>
+            </li>
+        </ul>    
+    </nav>
+
+
+
+
+    <div class="topnav" style="">
+            <a id="navicon" onclick="openNav()" style="width:0px;"><i class="fa fa-navicon fa-2x" style="user-select: none; padding:0px; margin:0px"></i></a>
+            <a class="logo" href="/">STREAMZ</a>
+            <a class="username" href="/myprofile">$firstname</a>        
+            <div class="search-container">
+                <form method="POST" action="../search">
+                <input type="text"  placeholder="Search.." id="searchtext" name="searchtext">
+                <button  type="submit" class="button fa-fa-search" value="Search" ><i class="fa fa-search fa-2x"></i></button>
+                </form>
+            </div>
+            &nbsp; &nbsp; &nbsp; &nbsp;
+            <div style="float:right; margin-top:20px;" id="google_translate_element">
+            </div>
+            <a class="username" href="/uploadvideo"><i class="fa fa-upload fa-2x"></i></a>
+        </div>
+
+            
+
+            <div class="grid-container">
+
+                    <div class="video-content" >
+
+                        <video controls ="controls" class="video" id="myVideo">
+                            <source autoplay loop src="http://0.0.0.0:8080/videos/$videoid" type="video/mp4">
+                            <track src="http://0.0.0.0:8080/subtitles/$videoid" kind="subtitles" srclang="en" label="English">
+                            <track src="http://0.0.0.0:8080/subtitles/$videoid" label="English subtitles"  kind="subtitles" srclang="en" default>  	
+                                
+                        </video>
+
+                        <div id="video_controls_bar" style="font-family: 'Patua One', cursive;font-size: 20px;background-color:#000;color:#FFF;padding:5px;margin-top:7px;text-align: center;" class="video">
+                            <label>SPEED:</label>
+                            <select id="d1" onchange="myfunc(this.value)" style="background-color:#000;" >
+                               <option value=".5" >.5X</option>
+                               <option value="1"  selected="selected">1X</option>
+                               <option value="2" >2X</option>
+                            </select>
+                          </div>
+                    <div>
+                            <div style="width:100%;"><h1 style="font-family: 'Ubuntu', sans-serif; color:white; float:left;">$videoname</h1></div>
+                                                <br/><br/>
+                        <div   style="padding-right:10%;">
+                            $if subscribestatus==1:
+                                <form method="POST" action="/unsubscribe">
+                                    <input value="$videoid" style="display:none;" type="text" name="videoid"/>
+                                    <input value="$username" style="display:none;" type="text" name="username"/>
+                                    <input value="$uploader" style="display:none;" type="text" name="uploader"/>
+                                    <button style="float:right; background-color: #CCC;margin-top:1%" class="button">SUBSCRIBED</button>
+                                </form>
+                            $else:
+                                <form method="POST" action="/subscribe">
+                                    <input value="$videoid" style="display:none;" type="text" name="videoid"/>
+                                    <input value="$username" style="display:none;" type="text" name="username"/>
+                                    <input value="$uploader" style="display:none;" type="text" name="uploader"/>
+                                    <button style="float:right; background-color:#e46226; margin-top:1%" class="button">SUBSCRIBE</button>
+                                </form>
+                            
+                            $if likestatus==1:
+                                <form method="POST" action="/dislike">
+                                    <input value="$videoid" style="display:none;" type="text" name="videoid"/>
+                                    <input value="$username" style="display:none;" type="text" name="username"/>
+                                    <input value="$uploader" style="display:none;" type="text" name="uploader"/>
+                                    <button style="float:right; background:none; border:none;" type="submit"><i style="font-size:40px; z-index:-10;" class="fa fa-thumbs-down fa-2x"></i></button>
+                                </form>
+                                <form method="POST" action="/nonelike">
+                                    <input value="$videoid" style="display:none;" type="text" name="videoid"/>
+                                    <input value="$username" style="display:none;" type="text" name="username"/>
+                                    <input value="$uploader" style="display:none;" type="text" name="uploader"/>
+                                    <button style="float:right; margin-right:25px; color:#e46226; background:none; border:none;" type="submit"><i style="font-size:40px; z-index:-10;" class="fa fa-thumbs-up fa-2x"></i></button>
+                                </form>
+                                
+                            $elif likestatus==2:
+                                <form method="POST" action="/nonelike">
+                                    <input value="$videoid" style="display:none;" type="text" name="videoid"/>
+                                    <input value="$username" style="display:none;" type="text" name="username"/>
+                                    <input value="$uploader" style="display:none;" type="text" name="uploader"/>
+                                    <button style="float:right; background:none; color:#e46226; border:none;" type="submit"><i style="font-size:40px; z-index:-10;" class="fa fa-thumbs-down fa-2x"></i></button>
+                                </form>
+                                <form method="POST" action="/like">
+                                    <input value="$videoid" style="display:none;" type="text" name="videoid"/>
+                                    <input value="$username" style="display:none;" type="text" name="username"/>
+                                    <input value="$uploader" style="display:none;" type="text" name="uploader"/>
+                                    <button style="float:right; margin-right:25px;  background:none; border:none;" type="submit"><i style="font-size:40px; z-index:-10;" class="fa fa-thumbs-up fa-2x"></i></button>
+                                </form>
+                            $else:
+                                <form method="POST" action="/dislike">
+                                    <input value="$videoid" style="display:none;" type="text" name="videoid"/>
+                                    <input value="$username" style="display:none;" type="text" name="username"/>
+                                    <input value="$uploader" style="display:none;" type="text" name="uploader"/>
+                                    <button style="float:right; background:none; border:none;" type="submit"><i style="font-size:40px; z-index:-10;" class="fa fa-thumbs-down fa-2x"></i></button>
+                                </form>
+                                <form method="POST" action="/like">
+                                    <input value="$videoid" style="display:none;" type="text" name="videoid"/>
+                                    <input value="$username" style="display:none;" type="text" name="username"/>
+                                    <input value="$uploader" style="display:none;" type="text" name="uploader"/>
+                                    <button style="float:right; margin-right:25px;  background:none; border:none;" type="submit"><i style="font-size:40px; z-index:-10;" class="fa fa-thumbs-up fa-2x"></i></button>
+                                </form>
+                            
+                            
+
+                        </div><br/>
+
+                    </div>
+                    <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:#ccc; font-size: 22px;padding:0px;line-height: 1;"> $views Views<i class="fa fa-circle" style="font-size:5px;padding:0px;margin:0px;width:10px;"></i>$likes Likes<i class="fa fa-circle" style="font-size:5px;padding:0px;margin:0px;width:10px;"></i>$dislikes Dislikes</span>   
+                        
+                    <div><hr/></div>
+
+                        
+                        <div  style="width:70px;float:left; padding:1%; ">
+                            <img class=".img-circle" style="border-radius: 70%; height:50px; width:50px;" src="http://0.0.0.0:8080/profilepic/$uploader" width=100%>                               
+                        </div>
+                        <div style="width:100%-70px;float:left;padding-top:1%;">
+                            <p style="font-family: 'Patua One', cursive;font-size: 20px; color:#FFF; font-weight: bold;line-height: 0.8;">$uploader</p>
+                                                                                                                         
+                        </div><br/><br/>
+                        <p style="font-family: 'Karla', sans-serif; font-weight: 100; color:white; font-size: 22px;">$videodescription</p>
+                        <hr/>
+                    </div>
+                    <div class="recommendation" style="padding:0 10%;">
+                            <p style="color:white; font-size:27px; font-family: 'Montserrat', sans-serif;">RECOMMENDATIONS</p> 
+                        $for i in range(len(recomresult)):
+                            <div class="recommended-videos">
+                                <div style="padding:2%"><a style="width:100%" href="/play/$recomresult[i]"><img src="http://0.0.0.0:8080/thumbnails/$recomresult[i]" width=100%></a>
+                                </div>
+                                <div>
+                                    <a href="/play/$recomresult[i]"><p style="font-family:Roboto, Arial, sans-serif; color:#FFF; padding:0px; font-size: 25px; font-weight: bold; line-height: 1; ">$recomvideoname[i]</p></a>
+                                    <p style="font-family:Roboto, Arial, sans-serif; padding:0px; color:#cccccc; font-size: 15px;line-height: 1;"><a href="/profile/$recomuploader[i]" style="font-weight: bold; color:#CCC;">$recomuploader[i]</a> <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:#ccc; font-size: 12px;padding:0px;line-height: 1;"><i class="fa fa-circle" style="font-size:5px;padding:0px;margin:0px;width:10px;"></i> $recomviews[i] Views<i class="fa fa-circle" style="font-size:5px;padding:0px;margin:0px;width:10px;"></i>$recomlikes[i] Likes<i class="fa fa-circle" style="font-size:5px;padding:0px;margin:0px;width:10px;"></i>$recomdislikes[i] Dislikes</span></p>
+                                    <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:#ccc; padding:0px; font-size: 15px;line-height: 1;">$recomdescription[i]</p>
+                                </div>
+                            </div>
+
+                                                   
+
+
+
+                    </div>
+                    <div class="comments" >
+                            <p style="color:white; font-family: 'Montserrat', sans-serif;">COMMENTS</p>
+                            <div class="comment-container">
+                                <form action="/comment" method="POST">
+                                <input value="$videoid" style="display:none;" type="text" name="videoid"/>
+                                <input value="$username" style="display:none;" type="text" name="username"/>
+                                <input type="text" placeholder="Write your comments here..." name="commenttext">    
+                                <input type="submit" class="button fa-fa-search" value="Comment" >
+                                </form>
+                            </div><br/>
+
+
+
+                            <div style="color:#FFF; ">
+                            $for i in range(len(commentid)):
+                                <div style="">
+                                    <div  style="width:70px;float:left; padding:1%; ">
+                                        <img class=".img-circle" style="border-radius: 70%; height:50px; width:50px;" src="http://0.0.0.0:8080/profilepic/$commentusername[i]" width=100%>                               
+                                    </div>
+                                    <div style="width:100%-70px;float:left;padding-top:1%;">
+                                        <p style="font-family: 'Patua One', cursive;font-size: 20px; font-weight: bold;">$commentusername[i]</p>
+                                        <p style="font-family: 'Patua One', cursive; font-size: 15px">$commentlist[i]</p>                                                                              
+                                    </div>
+                                </div><br/><br/>
+                                <hr/>
+                            </div>      
+                    </div>
+                  </div>
+
+<script>
+function openNav() {
+    var x = document.getElementById("navbar2");
+    if(x.style.width == "250px")
+        x.style.width = "0px";
+    else
+        x.style.width = "250px";
+
+}
+</script>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                
+<script>
+var vid = document.getElementById("myVideo");
+	
+
+function myfunc(v) {
+  switch(v) {
+    case ".5":
+      vid.playbackRate=0.5;
+      break;
+    case "1":
+      vid.playbackRate=1.0;      
+      break;    
+    case "2":
+      vid.playbackRate=2.0;      
+      break; 
+      
+    }
+  }
+
+
+
+</script>
+
